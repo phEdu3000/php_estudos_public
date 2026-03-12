@@ -45,9 +45,14 @@ if(isset($_POST['num1'])&& isset($_POST['num2'])){
                 $resultado = $num1 / $num2;
             }else{
                 echo "não é possivel dividir por zero ou negativo";
-            }
+           return;
         }
+        $resultado = $num1 / $num2;
     }
+
+    echo "Resultado: " . $resultado;
+}
+
 ?>
 </body>
 </html>
