@@ -34,15 +34,7 @@
 
 echo "🏧 Caixa Eletrônico\n";
 
-while ($opcao != 4) {
 
-    echo "\n=== MENU ===\n";
-    echo "1 - Ver saldo\n";
-    echo "2 - Depositar\n";
-    echo "3 - Sacar\n";
-    echo "4 - Sair\n";
-
-    $opcao = (int) readline("Escolha uma opção: ");
 
     switch ($opcao) {
 
