@@ -6,10 +6,31 @@
     <title>Caixa Eletrônico</title>
 </head>
 <body>
-    <?php
+    <h2>Caixa Eletrônico</h2>
 
-$saldo = 0;
-$opcao = 0;
+    <form method="post">
+        <label>Escolha uma opção</label><br><br>
+
+            <button name= "opcao" value="1">Ver saldo</button><br><br>
+            <button name="opcao" value="2">Depositar</button><br><br>
+            <button name="opcao" value="3">Sacar</button><br><br>
+            <button name="opcao" value="4">Sair</button><br><br>
+    </form>
+
+    <br>
+
+    <?php
+    session_start();
+
+    if(!isset($_SESSION['saldo'])){
+        $_SESSION['saldo'] = 0;
+    }
+
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $opcao = $_POST['opcao'];
+        
+    }
+
 
 echo "🏧 Caixa Eletrônico\n";
 
