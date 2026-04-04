@@ -58,18 +58,14 @@
 
              if($valor <= 0){
                 echo "❌ Valor inválido para depósito\n";
-             } else {
+             } elseif($valor > $_SESSION['saldo']){
+                echo "🚫 Saldo insuficiente para depósito\n";
+             } 
+             else {
                 $_SESSION['saldo'] += $valor;
                 echo "✅ Depósito de R$ " . number_format($valor, 2,',','.') . " realizado com sucesso!\n";
              }
-
-        case 4:
-            echo "👋 Encerrando...\n";
-            break;
-
-        default:
-            echo "❌ Opção inválida\n";
-    }
+                break;
 } ?>
     
 </body>
