@@ -22,14 +22,12 @@ if ($opcao == "sacar"){
         $mensagem = "🚫 Saldo insuficiente para saque!";
 }
 }
-if (opcao == "4"){
+if ($opcao == "4"){
     session_destroy();
-    header("Location:" .$_SERVER['PHP_SELF']);
+    header("Location:" . $_SERVER['PHP_SELF']);
     exit();
 }
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -54,18 +52,10 @@ if (opcao == "4"){
     <br>
 
     <?php
-    session_start();
+         if ($mensagem) echo"<strong>$mensagem</strong><br><br>";
 
-    if(!isset($_SESSION['saldo'])){
-        $_SESSION['saldo'] = 0;
-    }
 
-    if($_SERVER['REQUEST_METHOD']=="POST"){
-        $opcao = $_POST['opcao'];
-        
-    }
-
-    switch ($opcao) {
+        switch ($opcao) {
 
         case 1:
             echo "💰 Saldo atual: R$ " . number_format($_SESSION['saldo'], 2,',','.') . "\n";
@@ -75,32 +65,21 @@ if (opcao == "4"){
             echo '
             <form method="post">
                 <input type= "hidden" name = "opcao" value="depositar">
-                <input type= "number" step="0.01" name="valor" placeholder="Valor do depósito">';
-            echo '<button type="submit">Depositar</button>';
-            echo '</form>';
-                break;
+                <input type= "number" step="0.01" name="valor" placeholder="Valor do depósito">
+                <button type="submit">Depositar</button>
+             </form>';
+            break;
+
             case 3:
             echo'<form method="post">
                 <input type= "hidden" name = "opcao" value="sacar">
                 <input type= "number" step="0.01" name="valor" placeholder="Valor do saque">;
-             <button type="submit">Sacar</button>;
-             </form>';
+                <button type="submit">Sacar</button>;
+                </form>';
              break;
-
-             case"depositar":
-             $valor = $_POST['valor'];
-
-             if($valor <= 0){
-                echo "❌ Valor inválido para depósito\n";
-             } elseif($valor > $_SESSION['saldo']){
-                echo "🚫 Saldo insuficiente para depósito\n";
-             } 
-             else {
-                $_SESSION['saldo'] += $valor;
-                echo "✅ Depósito de R$ " . number_format($valor, 2,',','.') . " realizado com sucesso!\n";
-             }
-                break;
-} ?>
+           
+} 
+?>
     
 </body>
 </html>
