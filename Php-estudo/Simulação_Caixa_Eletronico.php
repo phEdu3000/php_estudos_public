@@ -1,3 +1,32 @@
+<?php 
+    session_start();
+
+    if(!isset($_SESSION['saldo'])){
+        $_SESSION['SALDO'] = 0;
+        }
+    $mensagem = "";
+    $opcao = isset($_POST['opcao']) ? $_POST['opcao'] : "";
+    $mensagem = "";
+
+    if($opcao=="depositar"){
+        $valor = (float)$_POST['valor'];
+        $_SESSION['saldo'] += $valor;
+        $mensagem = "✅ Depósito de R$ " . number_format($valor, 2,',','.') . " realizado com sucesso!";
+    }
+if ($opcao == "sacar"){
+    $valor = (float)$_POST['valor'];
+    if($valor <= $_SESSION['saldo']){
+        $_SESSION['saldo']-= $valor;
+        $mensagem = "✅ Saque de R$ " . number_format($valor, 2,',','.') . " realizado com sucesso!";
+    } else {
+        $mensagem = "🚫 Saldo insuficiente para saque!";
+}
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
