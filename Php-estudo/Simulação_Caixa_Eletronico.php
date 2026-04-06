@@ -22,6 +22,11 @@ if ($opcao == "sacar"){
         $mensagem = "🚫 Saldo insuficiente para saque!";
 }
 }
+if (opcao == "4"){
+    session_destroy();
+    header("Location:" .$_SERVER['PHP_SELF']);
+    exit();
+}
 ?>
 
 
@@ -35,7 +40,7 @@ if ($opcao == "sacar"){
     <title>Caixa Eletrônico</title>
 </head>
 <body>
-    <h2>Caixa Eletrônico</h2>
+    <h2>🏦 Meu Banco PHP</h2>
 
     <form method="post">
         <label>Escolha uma opção</label><br><br>
