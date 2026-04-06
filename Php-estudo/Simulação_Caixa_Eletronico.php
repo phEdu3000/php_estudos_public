@@ -58,7 +58,7 @@ if ($opcao == "4"){
         switch ($opcao) {
 
         case 1:
-            echo "💰 Saldo atual: R$ " . number_format($_SESSION['saldo'], 2,',','.') . "\n";
+            echo "💰 Saldo atual: R$ " . number_format($_SESSION['saldo']?? 0, 2,',','.') . "\n";
             break;
 
         case 2:
